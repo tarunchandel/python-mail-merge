@@ -1,6 +1,7 @@
 NAMES_FILE_PATH = "./Input/Names/invited_names.txt"
 STARTING_LETTER_PATH = "./Input/Letters/starting_letter.txt"
 INVITES_PATH = "./Output/ReadyToSend"
+PLACEHOLDER = "[name]"
 
 with open(NAMES_FILE_PATH, mode="r") as file:
     names = file.readlines()
@@ -10,6 +11,6 @@ with open(STARTING_LETTER_PATH, mode="r") as file:
 
 for name in names:
     name = name.strip("\n")
-    invite_text = letter_text.replace("[name]", name)
+    invite_text = letter_text.replace(PLACEHOLDER, name)
     with open(f"{INVITES_PATH}/letter_for_{name}.txt", mode="w") as file:
         file.write(invite_text)
